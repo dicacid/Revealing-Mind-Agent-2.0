@@ -1,12 +1,13 @@
-# Revealing Mind Agent 2.0 – Local Model Stub
+# Revealing Mind Agent 2.0 – Headless Non-Interactive Mode
 
 import os
+import time
 
 # Placeholder chat function for offline or local models
-# You can integrate any local LLM or custom logic here
+# This version runs a default action and exits immediately without user input
 
 def chat(prompt: str) -> str:
-    # Example stub response; replace with actual model inference
+    # Example stub response; replace with actual model inference or scripts
     return f"[Offline Agent] You said: '{prompt}'"
 
 
@@ -14,31 +15,14 @@ def main():
     print("\n============================")
     print("  🔥 Revealing Mind Agent 2.0 🔥")
     print("============================")
-    print("Status: BOOTED SUCCESSFULLY\n")
-
-    # In CI environments (like GitHub Actions), skip interactive loop
-    if os.environ.get("CI"):
-        print("Running in CI mode – skipping input loop.")
-        return
-
-    # Interactive command loop
-    while True:
-        try:
-            user_input = input("> Enter a command: ").strip()
-            if not user_input:
-                continue
-            if user_input.lower() in ("exit", "quit"):
-                print("Shutting down. Peace out.")
-                break
-            elif user_input.lower() == "status":
-                print("Agent Status: ✅ Operational")
-            else:
-                # Call the chat stub (or replace with real model call)
-                response = chat(user_input)
-                print(f"\n🤖 Agent Response:\n{response}\n")
-        except EOFError:
-            print("\nEOF detected. Exiting.")
-            break
+    print("Status: BOOTED SUCCESSFULLY")
+    
+    # Perform a default status check
+    response = chat("status")
+    print(f"\n🤖 Agent Default Response:\n{response}\n")
+    
+    # Exit after default action
+    print("Agent run completed. Exiting.")
 
 if __name__ == "__main__":
     main()
