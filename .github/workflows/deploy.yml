@@ -25,4 +25,4 @@ jobs:
 
       - name: Run agent (entry point script)
         run: |
-          python agent.py 
+          python main.py 
